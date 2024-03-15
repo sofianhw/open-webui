@@ -589,11 +589,11 @@
 					for (const line of lines) {
 						if (line !== '') {
 							console.log(line);
-							if (line === 'data: [DONE]') {
+							if (line === 'data: [DONE]' || line === 'data:[DONE]') {
 								responseMessage.done = true;
 								messages = messages;
 							} else {
-								let data = JSON.parse(line.replace(/^data: /, ''));
+								let data = JSON.parse(line.replace(/^data:\s*/, ''));
 								console.log(data);
 
 								if (responseMessage.content == '' && data.choices[0].delta.content == '\n') {
